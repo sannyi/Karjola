@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="sl">
+    <head>
+        <title>Karjola</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/style.css">
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <!-- Clicking on this should take you to home-->
+            <a class="navbar-brand mx-3 h1 mb-0 pr-5" href="#">
+                <span><b>Karjola</b></span>
+                <img src="./img/Logo.png" width="50" height="50" alt="">
+            </a>
+            <!-- Toggle navbar when screen gets too small-->
+            <button class="navbar-toggler navbar-toggler-icon" type="button" data-toggle="collapse" data-target="#toggleNavBar"></button>
+            <div class="collapse navbar-collapse" id="toggleNavBar">
+                
+                <!-- Search button-->
+                <div class="nav-item ml-auto my-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Išči gradivo">
+                        <div class="input-group-append">
+                          <button class="btn btn-secondary" type="button">
+                            <i class="fa fa-search"></i>
+                          </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dropdown-->
+                <div class="nav-item navbar-nav dropdown">
+                    <a class="nav-link fas fa-user fa-2x mx-3 d-flex justify-content-center" href="#" data-toggle="dropdown"></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <p class="dropdown-header text-info"><b>Uporabniško ime</b></p>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./user_settings.html">Nastavitve</a>
+                        <a class="dropdown-item" href="./admin_management.html">Upravljanje vsebine</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="#">Odjava</a>
+                    </div>
+                </div>
+            </div>  
+        </nav>
+        
+        <!--------------------------CONTENT-------------------------->
+        <main class="container mt-3">
+            <div class="content bg-dark">
+                <div class = "p-3">
+                    <p class="h3 p-3">UREJANJE PREDMETA</p>
+
+                    <div class="form-row col-md-12">
+                        <!-- ime predmeta -->
+                        <div class="form-group col-md-6">
+                            <label for="imePredmeta">Ime Predmeta</label>
+                            <input type="email" class="form-control" id="imePredmeta" placeholder="Spletno Programiranje">
+                        </div>
+                        <br/>
+                        <!-- letnik -->
+                        <div class="form-group col-md-3">
+                            <label for="izberiLetnik">Letnik</label>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="izberiLetnik" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Izberi letnik</button>
+                                <div class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">1.</a>
+                                    <a class="dropdown-item" href="#">2.</a>
+                                    <a class="dropdown-item" href="#">3.</a>
+                                    <a class="dropdown-item" href="#">Predmet ne spada v letnik.</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="izberiTip">Tip</label>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="izberiTip" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Izberi tip</button>
+                                <div class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Strokovni izbirni predmet</a>
+                                    <a class="dropdown-item" href="#">Splošni izbirni predmet</a>
+                                    <a class="dropdown-item" href="#">Ni izbirni predmet.</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="izberiProf" class="ml-3">Profesor/ji</label>
+                    <div class="input-group form-group ml-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="izberiProf" placeholder="doc. dr. Dejan Lavbič;" readonly>
+                        <div class="input-group-append">
+                            <button class="btn btn-danger">
+                                <i class="fa fa-times"></i>
+                              </button>
+                            <button class="btn btn-secondary dropdown-toggle mr-5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Osebje</button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">doc. dr. Dejan Lavbič</a>
+                            <a class="dropdown-item" href="#">as. Sandi Gec</a>
+                            <a class="dropdown-item" href="#">Matija Marolt</a>
+                            <a class="dropdown-item" href="#">Narvika Bovcon</a>
+                          </div>   
+                        </div> 
+                    </div>
+
+                    <label for="izberiAsistent" class="ml-3">Asistent/i</label>
+                    <div class="input-group form-group ml-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="izberiAsistent" placeholder="as. Sandi Gec;" readonly>
+                        <div class="input-group-append">
+                            <button class="btn btn-danger">
+                                <i class="fa fa-times"></i>
+                              </button>
+                            <button class="btn btn-secondary dropdown-toggle mr-5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Osebje</button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">doc. dr. Dejan Lavbič</a>
+                            <a class="dropdown-item" href="#">as. Sandi Gec</a>
+                            <a class="dropdown-item" href="#">Matija Marolt</a>
+                            <a class="dropdown-item" href="#">Narvika Bovcon</a>
+                          </div>   
+                        </div> 
+                    </div>
+                    <label for="izberiModul" class="ml-3">Modul/i</label>
+                    <div class="input-group form-group ml-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="izberiModul" placeholder="Razvoj Programske Opreme;" readonly>
+                        <div class="input-group-append">
+                            <button class="btn btn-danger">
+                                <i class="fa fa-times"></i>
+                              </button>
+                            <button class="btn btn-secondary dropdown-toggle mr-5" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Moduli</button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Razvoj Programske Opreme</a>
+                            <a class="dropdown-item" href="#">Informacijski Sistemi</a>
+                            <a class="dropdown-item" href="#">Multimedijske Vsebine</a>
+                          </div>   
+                        </div> 
+                    </div>
+
+                    <div class="form-group ml-3 mr-4">
+                        <label for="exampleFormControlTextarea1">Opis predmeta</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" valu>Pri predmetu se bomo posvetili pregledu nad tehnologijami, ki se uporabljajo pri delovanju spleta, spletnih strežnikov, brskalnikov in spletnih aplikacij. Pregledali bomo osnove izdelave in oblikovanja spletnih strani (HTML5 in CSS3), jih nadgradili s pregledom tehnologij na strani odjemalca (JavaScript) in strežnika (Node.js) ter implementirali REST API dostop do podatkovne baze (MongoDB). Cilj predmeta je študentu podati širino znanj, povezanih z delovanje raznovrstnih sodobnih spletnih tehnologij in razvojnih okolij in študenta usposobiti za samostojno učenje novih heterogenih tehnologij v razvoju ter ga predvsem seznaniti s celostnim razvojem spletnih aplikacij.</textarea>
+                    </div>
+                    <div class="form-group ml-3 mr-4">
+                        <button type="button" class="btn btn-success btn-block">Shrani</button>
+
+                    </div>
+                    <div class="form-group ml-3 mr-4">
+                        <button type="button" class="btn btn-danger btn-block" onclick="potrdiIzbris()">Izbriši predmet</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+        <script>
+            function potrdiIzbris() {
+                if(confirm('Are you sure?\nOnce deleted, you can\'t go back.')) {
+                    console.log('predmet izbrisan :(');
+                }
+            }
+        </script>
+    </body>
+</html>
