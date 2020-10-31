@@ -1,6 +1,6 @@
 # Spletno programiranje 2020/2021
 
-Lastni projekt pri predmetu **Spletno programiranje** v študijskem letu **2020/2021**.
+Lastni projekt pri predmetu **Spletno programiranje** v študijskem letu **2020/2021**. Repozitoriji ostalih članov, ki so k projektu prispevali: [Jure Pustolemšek](https://github.com/jurepustos), [Evita Podobnikar](https://github.com/evitapodobnikar), [Eva Gaberšek](https://github.com/gabers-e) in [Jan Krivec](https://github.com/JKrivec).
 
 
 ## 1. LP
