@@ -1,0 +1,50 @@
+<div class="row m-0 mt-2">
+    {{>sidebar}}
+    <main class="col-sm-12 col-md-12 col-lg-9 m-0 p-sm-0 px-md-2 mt-3">
+        <div class="content bg-dark p-3">
+            <div class="container">
+                <p class="h3 py-3">UPORABNIŠKE NASTAVITVE</p>
+                
+                <p>UPORABNIŠKO IME: {{username}}</p>
+                <p>E-POŠTNI NASLOV: {{email}}</p>
+                <form id="changeUsernameForm" method="POST" action="/uporabniki/{{idUporabnika}}" class="mb-3">
+                    <input type="hidden" name="obrazec" value="posodobiUporabniskoIme">
+                    <div class="form-group">
+                        <label for="userName">UPORABNIŠKO IME</label>
+                        <input type="text" class="form-control" name="novoUporabniskoIme" id="userName" placeholder="Uporabniško ime" required>
+                    </div>
+                    <button id="changeUsernameSubmit" class="btn btn-primary" type="submit">Spremeni uporabniško ime</button>
+                </form>
+                <form id="changePasswordForm" method="POST" action="/uporabniki/{{idUporabnika}}" class="mb-3">
+                    <input type="hidden" name="obrazec" value="posodobiGeslo">
+                    <div class="form-group">
+                        <label for="currentPassword">TRENUTNO GESLO</label>
+                        <input type="password" class="form-control" name="trenutnoGeslo" id="currentPassword" placeholder="Trenutno geslo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentPassword">NOVO GESLO</label>
+                        <input type="password" class="form-control" name="novoGeslo" id="currentPassword" placeholder="Novo geslo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentPassword">POTRDITEV GESLA</label>
+                        <input type="password" class="form-control" name="potrdiNovoGeslo" id="currentPassword" placeholder="Novo geslo" required>
+                    </div>
+                    <button id="changePasswordSubmit" class="btn btn-primary" type="submit">Spremeni geslo</button>
+                </form>
+                <form method="POST" action="/odjava">
+                        <button id="changePasswordSubmit" class="btn btn-danger" type="submit">Odjavi se "{{username}}"</button>
+                </form>
+                <br>
+                <form method="POST" action="/uporabniki/izbrisi/{{idUporabnika}}">
+                        <button id="changePasswordSubmit" class="btn btn-danger" type="submit">Izbris uporabnika "{{username}}"</button>
+                </form>
+                <br>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong id="danger-strong">Uredi geslo po zahtevah!</strong> <span id="danger-navadno">Geslo mora biti sestavljeno iz najmanj 8 znakov - vsaj ene velike in ene male tiskane črke, ene številke ter enega posebnega znaka. Obe gesli morata biti enaki.</span>
+                    </button> 
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="../public/js/userSettings.js"></script>

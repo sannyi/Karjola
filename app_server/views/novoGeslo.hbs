@@ -1,0 +1,33 @@
+ <div class="row m-0 mt-2">
+          {{>sidebar}}
+        <main class="col-sm-12 col-md-9 mt-3">
+            <div class="content bg-dark p-3">
+                    <h2 class="formtitle">VNOS NOVEGA GESLA</h2>
+                    <br/>
+                    <form method="POST" action="">
+                        <div class="form-row col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group col-md-6 col-lg-12">
+                                <label for="exampleInputPassword1">NOVO GESLO <em class="required">*</em></label>
+                                <input type="password" class="form-control" id="InputPassword" placeholder="Geslo" name="novoGeslo" required>
+                            </div>                           
+                            <div class="form-group col-md-6 col-lg-12" >
+                                <label for="repeatPassword">POTRDI GESLO <em class="required">*</em></label>
+                                <input type="password" class="form-control" id="repeatPassword" placeholder="Ponovi geslo" name="potrdiNovoGeslo" required>   
+                            </div>        
+                        </div>
+                        <div class="form-group col-md-2 col-lg-6">
+                            <button type="submit" id="submit" class="btn btn-primary">Ponastavi!</button>
+                        </div>
+                        <div class="alerts col-md-12">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong id="danger-strong">Zahtevana vnosna polja niso izpolnjena!</strong><span id="danger-navadno"></span>
+                            </div>         
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Geslo je bilo uspešno ponastavljeno!</strong>
+                            </div>
+                        </div>
+                    </form>
+            </div>        
+        </main>
+      </div>
+      <script src="/public/js/forms.js"></script>

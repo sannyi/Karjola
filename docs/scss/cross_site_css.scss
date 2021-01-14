@@ -43,6 +43,9 @@ body
 .alerts{
     color:inherit;
 }
+.alert{
+    display: none;
+}
 
 .btn-primary {
     background-color: $btn_color;

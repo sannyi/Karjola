@@ -6,7 +6,6 @@
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
-        <link rel="stylesheet" type="text/css" href="../css/cross_site_css.css"/>
 
         <title>Uporabniške nastavitve</title>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -119,40 +118,45 @@
                         
                         <p>UPORABNIŠKO IME: Janez Novak</p>
                         <p>E-POŠTNI NASLOV: jn0000@student.uni-lj.si</p>
-                        <form method="POST" action="./user_settings.html" class="mb-3">
+                        <form id="changeUsernameForm" method="POST" action="./user_settings.html" class="mb-3">
                             <div class="form-group">
                                 <label for="userName">UPORABNIŠKO IME</label>
                                 <input type="text" class="form-control" name="username" id="userName" placeholder="Uporabniško ime" required>
                             </div>
-                            <button class="btn btn-primary" type="submit">Spremeni uporabniško ime</button>
+                            <button id="changeUsernameSubmit" class="btn btn-primary" type="submit">Spremeni uporabniško ime</button>
                         </form>
-                        <form method="POST" action="./user_settings.html" class="mb-3">
+                        <form id="changePasswordForm" method="POST" action="./user_settings.html" class="mb-3">
                             <div class="form-group">
                                 <label for="currentPassword">TRENUTNO GESLO</label>
                                 <input type="password" class="form-control" name="currentPassword" id="currentPassword" placeholder="Trenutno geslo" required>
                             </div>
                             <div class="form-group">
                                 <label for="currentPassword">NOVO GESLO</label>
-                                <input type="password" class="form-control" name="currentPassword" id="currentPassword" placeholder="Novo geslo" required>
+                                <input type="password" class="form-control" name="newPassword" id="currentPassword" placeholder="Novo geslo" required>
                             </div>
-                            <button class="btn btn-primary" type="submit">Spremeni geslo</button>
+                            <div class="form-group">
+                                <label for="currentPassword">POTRDITEV GESLA</label>
+                                <input type="password" class="form-control" name="confirmPassword" id="currentPassword" placeholder="Novo geslo" required>
+                            </div>
+                            <button id="changePasswordSubmit" class="btn btn-primary" type="submit">Spremeni geslo</button>
                         </form>
 
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Uredi geslo po zahtevah!</strong> Geslo mora biti sestavljeno iz najmanj 8 znakov - vsaj ene velike in ene male tiskane črke, ene številke ter enega posebnega znaka. Obe gesli morata biti enaki.
+                            <strong id="danger-strong">Uredi geslo po zahtevah!</strong> <span id="danger-navadno">Geslo mora biti sestavljeno iz najmanj 8 znakov - vsaj ene velike in ene male tiskane črke, ene številke ter enega posebnega znaka. Obe gesli morata biti enaki.</span>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button> 
                         </div>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>To uporabniško ime že obstaja!</strong> Uporabniško ime mora biti unikatno.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button> 
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 
+                <script src="../js/userSettings.js"></script>
             </main>
         </div>
     </body>

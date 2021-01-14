@@ -1,0 +1,220 @@
+<div class="row m-0 mt-2">
+    {{> sidebar }}
+    <main class="col-sm-12 col-md-12 col-lg-9 mt-3">
+        <div class="content bg-dark">
+            <div class = "p-3">
+                <!--naslov-->
+                
+                <p class="h3 p-3">{{uppercase title}}</p>
+                {{#if uporabnik}}
+                    <a href="{{id}}/nastavitve">
+                        <button type="button" class ="btn btn-secondary ml-3">Uredi
+                            <i class="fa fa-edit d-inline p-3"></i>    
+                        </button>
+                    </a>
+                {{/if}}
+
+                <!--vsebina-->
+                <div class="content bg-darkerBg p-3 my-3">
+                    <p class="h4">VSEBINA</p>
+                    <p class = "mt-3">{{vsebina}}</p>
+                </div> 
+                <!--izvajalci-->
+                <div class="content bg-darkerBg p-3 mb-3">
+                    <p class="h4">IZVAJALCI</p>
+                    <div class="d-flex mt-3">
+                        {{#ifLength profesorji 1}}
+                            <p>PROFESOR:</p>
+                        {{else}}
+                            <p>PROFESORJI:</p>
+                        {{/ifLength}}
+                        <div class="ml-1">
+                            {{#each profesorji as | profesor |}}
+                                <a href="/osebje/{{profesor._id}}">{{ profesor.ime_priimek }}</a>
+                            {{/each}}
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex">
+                        {{#ifLength asistenti 1}}
+                            <p>ASISTENT:</p>
+                        {{else}}
+                            <p>ASISTENTI:</p>
+                        {{/ifLength}}
+                        <div class="ml-1">
+                            {{#each asistenti as | asistent |}}
+                                <a href="/osebje/{{asistent._id}}">{{ asistent.ime_priimek }}</a><br>
+                            {{/each}}
+                        </div>
+                    </div>
+                    
+                </div>
+                <!--nastavitve--> 
+                <div class="content bg-darkerBg p-3 mb-3">
+                    <p class="h4">NASTAVITVE PREDMETA</p>
+                    <p class = "mt-3">LETNIK: {{formatirajIzpisNastavitev letnik 'letnik'}}</p>
+                    <p>SEMESTER:  {{formatirajIzpisNastavitev semester 'semester'}}</p>
+                    <p>MODULI:{{#if moduli}}  {{#each moduli as | modul |}}{{ modul.ime }}{{/each}}{{else}}  Predmet ni v modulu{{/if}}</p>
+                    <p>TIP: {{formatirajIzpisNastavitev vrstaIzbirnega 'vrstaIzbirnega'}}</p>
+                </div> 
+                <!--dokumenti-->
+                <div class="content bg-darkerBg p-3 mb-3">
+                    <p class="h4">DOKUMENTI IN POVEZAVE</p>
+                    {{#if gradiva}}
+                        {{#each gradiva as | gradivo |}}
+                            <button type="button" class="btn predmet-btn dropdown-toggle my-2 pl-3" data-toggle="collapse" data-target="#datoteka{{@index}}">{{gradivo.ime}}</button>
+                            <div id="datoteka{{@index}}" class="collapse pl-2">
+                                {{#if ../uporabnik.isAdmin}}
+                                    <p class="px-3 text-danger">Št. prijav gradiva: {{gradivo.stPrijav}}</p>
+                                    <form action="/gradivo/{{_id}}/preklopiVidljivost" method="post" class="d-inline">
+                                        <button type="submit" class ="btn gradivoOptions ml-3">
+                                            {{#if gradivo.vidno}}
+                                                <i class="fa fa-eye-slash black d-inline mx-1 mt-1"></i>
+                                            {{else}}
+                                                <i class="fa fa-eye black d-inline mx-1 mt-1"></i>
+                                            {{/if}}
+                                        </button>
+                                    </form>
+
+                                    <form action="/gradivo/{{gradivo._id}}/izbrisi" method="post" class="d-inline">
+                                        <button type="submit" class="btn gradivoOptions ml-3">
+                                            <i class="fa fa-trash-alt black d-inline mx-1 mt-1"></i>
+                                        </button>
+                                    </form>
+                                {{else}}
+                                    <form action="/gradivo/{{gradivo._id}}/prijavi" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-secondary gradivoOptions ml-3">
+                                            <i class="fa fa-exclamation-triangle black d-inline mx-1 mt-1"></i>
+                                        </button>
+                                    </form>
+                                {{/if}}
+
+                                <button type="button" class ="btn gradivoOptions ml-3">
+                                    <a href="/gradivo/{{gradivo._id}}" class="fa fa-download black d-inline mx-1 mt-1"></a>
+                                </button>
+                                
+                                <!--komentarji-->
+                                <div class= "mt-2 ml-3">
+                                    <p>Komentarji</p>
+                                    {{#each gradivo.komentarji as | komentar |}}
+                                        <div class="komentar text-dark my-2">
+                                            <p class="h5 ml-3 d-inline">
+                                                {{#ifEither komentar.avtor ../../uporabnik.isAdmin}}
+                                                    {{#ifEither komentar.anonimnost ../../uporabnik.isAdmin}}
+                                                        {{komentar.avtor.userName}} (Anonimno)
+                                                    {{else}}
+                                                        {{komentar.avtor.userName}}
+                                                    {{/ifEither}}
+                                                {{else}}
+                                                    Anonimen uporabnik
+                                                {{/ifEither}}
+                                            </p>
+                                            <p class="h6 ml-3">{{formatDate komentar.datum}}</p>
+                                            <p class="p-3">{{komentar.besedilo}}</p>
+                                            
+                                            {{#if ../../uporabnik.isAdmin}}
+                                                <p class="px-3 text-danger">Št. prijav: {{komentar.stPrijav}}</p>
+                                                <form action="/gradivo/{{gradivo._id}}/komentar/{{komentar._id}}/izbrisi" method="post">
+                                                    <button type="submit" class ="btn btn-secondary mx-3 mb-3">
+                                                        <i class="fa fa-trash-alt mx-3"></i>
+                                                    </button>
+                                                </form>
+                                                
+                                            {{else}} 
+                                                {{#ifEqual komentar.avtor._id ../../uporabnik._id}}
+                                                    <form action="/gradivo/{{gradivo._id}}/komentar/{{komentar._id}}/izbrisi" method="post">
+                                                        <button type="submit" class ="btn btn-secondary mx-3 mb-3">
+                                                            <i class="fa fa-trash-alt mx-3"></i>
+                                                        </button>
+                                                    </form>
+                                                {{else}}
+                                                    <form action="/gradivo/{{gradivo._id}}/komentar/{{komentar._id}}/prijavi" method="post">
+                                                        <button type="submit" class="btn btn-secondary mx-2 mb-3 p-1">Prijavi komentar</button>
+                                                    </form>
+                                                {{/ifEqual}}
+                                            {{/if}}
+                                        </div>
+                                    {{/each}}
+                                    {{#if ../uporabnik}}
+                                        <form action="/gradivo/{{gradivo._id}}/objaviKomentar" data-form="komentarForm" method="post">
+                                            <div class="form-group mt-3 ml-3">
+                                                <textarea class="komentar text-dark form-control" rows="3" name="komentar" placeholder="Vpiši svoj komentar"></textarea>
+                                                <div class="form-check m-1">
+                                                    <input type="checkbox" class="form-check-input" name="anonimno" value="true">
+                                                    <label class="form-check-label" for="anonimno">Komentiraj anonimno</label>
+                                                </div>
+                                                <button type="submit" name="submitComment" class="btn gradivoOptions my-2">ODDAJ KOMENTAR</button>
+                                                <div class="alerts col-md-12">
+                                                    <div class="alert alert-danger" data-alert="commentEmpty" role="alert">
+                                                        <strong>Praznega komentarja ne moreš oddati!</strong>
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                        </form>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{else}}
+                        <div class="pl-2 pt-3">
+                            <p class="text-info">Predmet še nima objavljenega gradiva :(<br>Bodi car in ga dodaj!</p>
+                        </div>
+                    {{/if}}
+
+                
+                    {{#if uporabnik}}
+                        <!-- dodajanje gradiva -->
+                        <div class ="content bg-default mt-5 p-3">
+                            <p class="h4 black mx-3 text-center">Dodaj novo gradivo</p>
+                        </div>
+                        <form action="" enctype="multipart/form-data" method="post" data-form="uploadForm">
+                            <p class="h4 m-3">Povezava</p>
+                            <div class="form-group mt-3 ml-3">
+                                <textarea class="form-control text-dark" id="link" rows="1" name="povezava" placeholder="Link do gradiva" pattern="https?:\/\/[-a-zA-Z0-9@:%._\+~#=]+\.[a-zA-Z0-9()]+\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"></textarea>     
+                            </div>
+                            <p class="h4 m-3">Naloži datoteko</p>
+                            <div class="input-group mb-3 ">
+                                <div class="custom-file ml-3 ">
+                                    <input type="file" class="custom-file-input" id="inputFile" name="datoteka" onchange="getFile()">
+                                    <label class="custom-file-label " for="inputGroupFile01" id="fileName">Izberi datoteko (max 16 Mb)</label>
+                                </div>
+                            </div>
+                            <div class="alerts col-md-12">
+                                <div class="alert alert-danger" id="fileEmpty" role="alert">
+                                    <strong>Dodaj datoteko ali povezavo na gradivo!</strong>
+                                </div>
+                                <div class="alert alert-danger" id="invalidUrl" role="alert">
+                                    <strong>Neveljaven URL!</strong>
+                                </div>
+                                <div class="alert alert-danger" id="tooManyfiles" role="alert">
+                                    <strong>Dodaš lahko samo eno datoteko!</strong>
+                                </div>
+                                <div class="alert alert-danger" id="tooBigFile" role="alert">
+                                    <strong>Datoteka je večja kot 16Mb!</strong>
+                                </div>
+                                <div class="alert alert-danger" id="fileCantHaveBoth" role="alert">
+                                    <strong>Dodaš lahko ali samo datoteko ali pa samo povezavo!</strong>
+                                </div>
+                                {{#if uspeh}}
+                                    <div class="alert alert-success" id="uploadSuccess" style="display:block" role="alert">
+                                        <strong>Gradivo dodano!</strong>
+                                    </div>
+                                {{else if napaka}}
+                                    <div class="alert alert-danger" id="uploadFailure" style="display:block" role="alert">
+                                        <strong>Nalaganje gradiva ni uspelo.</strong> Prosimo, poskusite še enkrat.
+                                    </div>
+                                {{/if}}
+                                
+                            </div>  
+                            <button class="gradivoOptions btn btn-block m-2" type="submit">
+                                <p class="hidden" id="predmetId" >{{id}}</p>
+                                <i class="fa fa-upload black mt-2"></i>
+                            </button>
+                        </form>
+                    {{/if}}
+                </div> 
+            </div>
+        </div>
+    </main>
+</div>
+<script src="/public/js/komentarForm.js"></script>

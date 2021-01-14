@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/public/css/all.min.css">
+        <link rel="stylesheet" href="/public/css/style.css">
+        
+        <script src="/public/js/jquery-3.5.1.min.js"></script>
+        <script src="/public/js/bootstrap.bundle.min.js"></script>
+
+    </head>
+    <body>
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <!-- Clicking on this should take you to home-->
+            <a class="navbar-brand mx-3 h1 mb-0 pr-5" href="/">
+                <span><b>Karjola</b></span>
+                <img src="/public/img/Logo.png" width="50" height="50" alt="">
+            </a>
+            <!-- Toggle navbar when screen gets too small-->
+            <button class="navbar-toggler navbar-toggler-icon" type="button" data-toggle="collapse" data-target="#toggleNavBar"></button>
+            <div class="collapse navbar-collapse" id="toggleNavBar">
+                
+                {{!-- <div class="nav-item my-2">
+                    <a class="nav-link btn btn-info py-1 ml-auto mr-2 px-2" href="/admin">Admin panel</a>
+                </div> --}}
+                {{#unless uporabnik}}
+                    <!-- Login anad register buttons-->
+                    <div class="nav-item my-2">
+                        <a class="nav-link btn btn-secondary py-1 ml-auto mr-2 px-2 " href="/prijava">Prijava</a>
+                    </div>
+                    <div class="nav-item my-2">
+                        <a class="nav-link btn btn-success py-1 ml-auto mr-2 px-2" href="/registracija">Registracija</a>
+                    </div>
+                {{/unless}}
+                <!-- Search button-->
+                <div class="nav-item ml-auto my-2">
+                    <form action="/iskanje" method="get" class="d-inline">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="iskalniIzraz" placeholder="Išči gradivo">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                {{#if uporabnik}}
+                    {{#with uporabnik}}
+                        <!-- User button -->
+                        <div class="nav-item navbar-nav dropdown">
+                            <a class="nav-link fas fa-user fa-2x mx-3 d-flex justify-content-center" href="#" data-toggle="dropdown"></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <p class="dropdown-header text-info"><b>{{userName}}</b></p>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/uporabniki/{{_id}}">Uporabniške nastavitve</a>
+                                {{#if isAdmin}}
+                                    <a class="dropdown-item" href="/admin">Admin panel</a>
+                                {{/if}}
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="/odjava">Odjava</a>
+                            </div>
+                        </div>
+                    {{/with}}
+                {{/if}}
+            </div>  
+        </nav>
+        {{{body}}}
+    </body>
+</html>

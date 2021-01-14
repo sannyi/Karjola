@@ -1,0 +1,20 @@
+<div class="row m-0 mt-2">
+    {{> sidebar }}
+    <main class="col-sm-12 col-md-12 col-lg-9 mt-3">
+        <div class="content bg-dark">
+            <div class = "p-3">
+                <!--naslov-->
+                
+                <p class="h3 p-3">{{uppercase title}}</p>
+                
+                {{#each sp_podnaslovi as |tocka|}}
+                    <div class="content bg-darkerBg p-3 my-3">
+                        <p class="h4">{{tocka.podnaslov}}</p>
+                        <p>{{tocka.vsebina}}</p>
+                    </div>
+                {{/each}}
+                
+            </div>
+        </div>
+    </main>
+</div>

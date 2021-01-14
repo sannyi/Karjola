@@ -7,14 +7,14 @@
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" type="text/css" href="../css/cross_site_css.css"/>
+       
     </head>    
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
             <!-- Clicking on this should take you to home-->
             <a class="navbar-brand mx-3 h1 mb-0 pr-5" href="#">
                 <span><b>Karjola</b></span>
-                <img src=".\img\Logo.png" width="50" height="50" alt="">
+                <img src=".\img\Logo.png" width="50" height="50" alt="" />
             </a>
             <!-- Toggle navbar when screen gets too small-->
             <button class="navbar-toggler navbar-toggler-icon" type="button" data-toggle="collapse" data-target="#toggleNavBar"></button>
@@ -31,25 +31,12 @@
                 <!-- Search button-->
                 <div class="nav-item ml-auto my-2">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Išči gradivo">
+                        <input type="text" class="form-control" id="searchinput" placeholder="Išči gradivo">
                         <div class="input-group-append">
                           <button class="btn btn-secondary" type="button">
                             <i class="fa fa-search"></i>
                           </button>
                         </div>
-                    </div>
-                </div>
-                <!-- Dropdown-->
-                <div class="nav-item navbar-nav dropdown">
-                    <a class="nav-link fas fa-user fa-2x mx-3 d-flex justify-content-center" href="#" data-toggle="dropdown"></a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <p class="dropdown-header text-info"><b>Uporabniško ime</b></p>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Dropdown item 1</a>
-                        <a class="dropdown-item" href="#">Dropdown item 2</a>
-                        <a class="dropdown-item" href="#">Dropdown item 3</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="#">Odjava</a>
                     </div>
                 </div>
             </div>  
@@ -116,20 +103,20 @@
             <div class="content bg-dark p-3">
               <h2 class="formtitle">REGISTRACIJA</h2>
               <br/>
-              <form method="GET" action="prijava.html">
+              <form method="GET" action="prijava.html" autocomplete="on" id="forma">
                 <div class="form-row col-md-12">
                   <div class="form-group col-md-6">
                         <label for="inputEmail4">UPORABNIŠKO IME <em class="required">*</em></label>
-                        <input type="text" class="form-control" id="userName" placeholder="Uporabniško ime" required>
+                        <input type="text" class="form-control" id="userName" name="uporabniskoime" placeholder="Uporabniško ime" required autofocus>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">E-POŠTA <em class="required">*</em></label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Vnesi email" required autocomplete="on"
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Vnesi email" autocomplete="on"
                     pattern="[a-z]{2}[0-9]{4}@student.uni-lj.si" title="Vnesi e-poštni naslov, ki si ga prejel s strani Univerze v Ljubljani. Primer: jn0000@student.uni-lj.si" required>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="exampleInputPassword1">GESLO <em class="required">*</em></label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Geslo" required>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Geslo" required>
                   </div>
                   <div class="form-group col-md-6" >
                     <label for="repeatPassword">POTRDITEV GESLA <em class="required">*</em></label>
@@ -139,16 +126,16 @@
                 <div class="form-row col-md-12">
                   <div class="form-group col-md-4">
                     <label for="inputAddress">NASLOV <em class="required">*</em></label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Trg republike" autocomplete="on" required>
+                    <input type="text" class="form-control" id="inputAddress" name="naslov" placeholder="Trg republike" autocomplete="on" required>
                   </div>
                   <div class="form-group col-md-4">
                       <label for="inputZip">POŠTNA ŠTEVILKA <em class="required">*</em></label>
-                      <input type="text" class="form-control" id="inputZip" placeholder="1000" title="Vnesi ustrezno poštno številko občine, v kateri živiš." autocomplete="on" required>
+                      <input type="text" class="form-control" id="inputZip" placeholder="1000" name="posta" title="Vnesi ustrezno poštno številko občine, v kateri živiš." onfocusout="api()" required>
                   </div>
                   <br/>
                   <div class="form-group col-md-4">
                       <label for="inputCity">KRAJ</label>
-                      <input type="text" class="form-control" id="inputCity" placeholder="Ljubljana" autocapitalize="on" disabled required>
+                      <input type="text" class="form-control" id="inputCity" name="kraj" placeholder="Ljubljana"  autocapitalize="on" disabled required>
                   </div>
                 </div>
                 <div class="form-group col-md-12">
@@ -159,49 +146,24 @@
                     </label>
                   </div>
                   <br/>
-                  <button type="submit" class="btn btn-primary ">Registiraj se</button>
+                  <button type="submit" id="submit" class="btn btn-primary">Registriraj se</button>
                 </div>
                 <div class="alerts col-md-12">
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <strong>Zahtevana vnosna polja niso izpolnjena!</strong> Zahtevano je izpolniti vsa polja označeno z "*"
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button> 
-                  </div>
-                     
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <strong>Uredi geslo po zahtevah!</strong> Geslo mora biti sestavljeno iz najmanj 8 znakov - vsaj ene velike in ene male tiskane črke, ene številke ter enega posebnega znaka. Obe gesli morata biti enaki.
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button> 
-                  </div>
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Ups uporabniško ime ali e-poštni naslov že obstaja!</strong> Nekdo z enim od teh podatkov je že registriran.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button> 
-                </div>
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <strong>Preveri splošnje pogoje!</strong> Za kreiranje uporabniškega računa se je potrebno strinjati s splošnimi pogoji.
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button> 
-                  </div>         
-                  <div class="alert alert-success alert-dismissible fade show" role="alert">
-                      <strong>Registracija uspešna!</strong>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                  <div class="alert alert-danger fade show" role="alert">
+                      <strong id="danger-strong">Zahtevana vnosna polja niso izpolnjena!</strong><span id="danger-navadno"></span>
+                  </div>   
+                  <div class="alert alert-success  fade show" role="alert">
+                      <strong id="success-strong">Registracija uspešna!</strong></strong><span id="success-navadno"></span>
+              
                   </div>
                 </div>
               </form>              
             </div>
           </main>
       </div>
-        
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <script src="../js/forms.js" type="text/javscript"></script>
+        <script src="../js/forms.js"></script>
     </body>
 </html>

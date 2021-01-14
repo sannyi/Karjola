@@ -6,6 +6,12 @@ Dokumentacija lastnega projekta pri predmetu **Spletno programiranje** v študij
 
 Osnutek aplikacije in wireframe model
 
+### Master/detail vzorec
+
+Stranski meni omogoča navigacijo po predmetih. Vsak predmet je razvrščeni po: letniku, če je obvezen predmet za določen letnik; modulu, če je predmet modulski predmet; strokovnih/splošnih izbirnih predmetih, če je izbirni predmet. Če je smiselno, da kakšen predmet spada v več kategorij (npr. če se spremeni predmetnik, in predmet postane izbirni, zamenja modul itd.), bo dostopen v vseh kategorijah.
+![Stranski meni](./sidebar.png)
+
+
 ### Podrobnejši opisi zaslonskih mask
 
 Dostopno vsem:
@@ -35,6 +41,8 @@ Dostopno vsem:
   ![Prijava](./prijava.png)
 - Ponastavitev gesla:
   - Vnesemo e-mail, ki se nahaja v podatkovni bazi in kliknemo na gumb "Ponastavi geslo". V primeru napak ali nepravilnega vnosa uporabnika spletna stran obvesti.
+  ![Prikaz podatkovgit ](./podatki.png)
+  - Uporabniku se prikažejo zanimive statistike različnih podatkov na grafikonih.
   ![Ponastavitev gesla](./pozabljenoGeslo.png)
 - Vnos novega gesla:
   - V obe polji vnesemo enako novo geslo, ki ustreza kriteriju: Geslo mora biti sestavljeno iz najmanj 10 znakov - vsaj ene velike in ene male tiskane črke, ene številke ter enega posebnega znaka.
@@ -59,7 +67,9 @@ Dostopno vsem:
       - vsebina komentarja
       - gumb za prijavo neprimernega komentarja
   ![Stran predmeta](./predmet_nereg_user.png)
-
+- Statistike
+  - Grafi s statistikama razporeditve uporabnikov po krajih in razporeditve števila gradiv po predmetih
+  ![Statistike](./statistike.png)
 
 
 
@@ -143,6 +153,67 @@ Ugotovitve so naslednje:
 - v brskalniku **Microsoft Edge (Chromium)** se vsebina ustrezno prikaže, vse funkcionalnosti aplikacije delujejo pravilno
 - najbolj priporočljiva uporaba aplikacije je v brskalniku **Google Chrome**, saj je bila aplikacija razvita za ta brskalnik
 
+## 2. LP
+JavaScript in validacija uporabniških vnosov:
+- Registracija, prijava ter obnovitev gesla:
+  - Vsa polja morejo biti izpolnjena in ne smejo vsebovati HTML značk - izbrišemo besedilo kjer se pojavi HTML značka, iskalni vzorec pa je (/(<([^>]+)>)/ig).
+  - Polje za uporabniško ime ima lahko poljubno besedilo, le da se uporabnik izbere unikatno ime (Kar se sicer preverja v podatkovni bazi in se vrne ustrezno opozorilo - za implementirat)
+  - Polje za e-poštni naslov mora vsebovati e-poštni naslov, ki ga dobi študent s strani UL in je unikaten za vsekega študenta, preverja se pa z regularnim izrazom **[a-z]{2}[0-9]{4}@student.uni-lj.si**, primer veljavnega e-poštnega naslova bi tako bil "**ak3900@student.uni-lj.si**". Enako velja vnosno polje pri pozabljenem geslu (pozabljenoGeslo.html).
+  - Geslo morabiti sestavljeno iz ene velike in ene male tiskane črke. Vsebovati mora tudi eno števko in en poseben znak iz nabora "@€#&!" ali drugi "posebni" znak, hkrati pa mora biti vsaj dolgo 8 znakov. Regularni izraz za preverjanje tega je "**^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@€#\$%\^&\*])(?=.{8,})**" primer veljavnega gesla pa je "**AleksanderKovac97€**", ko preverjamo drugo geslo, če je seveda to potrebno (pri prijavi tega ni potregno preverjati), pa sam preverimo je enako prvemu. Če sta oba pogoja izpoljnjena, smemo napredovati. Enako se zahteva pri vnosu novega gesla, ko uporabnik želi nastaviti novo geslo.
+  - Pri naslovih uporabniku, damo proste roke, saj je različno število besed tvori naslove (Kajuhova ulica, Ulica heroja Mohorja), hkrati pa je možno hišnim številkam dodati tudi črko (npr. 519a), naselja izven kraja pošte imajo tudi več besed v samem nazivu. Našim ciljnim uporabnikom pa je znan tudi pojem **doxing**, tako, da tu ne pričakujemo smiselnega odgovora, pričakujemo pa vsaj nek tekst.
+  - Poštna številka je sestavljena iz štirih števk **(/^\d{4}$/)**
+  - Kraja ne moremo sami vnašati, saj se ta pridobi preko **zunanjega APIja**, ki ga gostuje doc. dr. Dejan Lavbič. Ob pravilni poštni številki se v polje izpiše kraj, sicer pa ustrezno opozorilo.
+  - Za uporabo strani pa se moramo strinjati s splošnimi pogoji, pri čemer, mora biti izpolnjeno potrditveno polje.
+- Prijava, pozabljeno geslo in vnos novega gesla:
+  - polja se preverjajo z enakimi regularnimi izrazi in na enak način kot pri registraciji.
+- Uporabniške nastavitve:
+  - Pri spremembi uporabniškega imena je edini pogoj, da je polje izpolnjeno.
+  - Pri vnosu novega gesla morejo biti izpolnjena vsa polja, ustrezati pa morajo regularnemu izrazu "**^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@€#\$%\^&\*])(?=.{8,})**. Primerne vrednosti so na primer: "AnotherRound12##", "Phoenix176#" in npr. "Predator12#".
+- Admin management:
+	- profesorji in asistenti:
+		- za uspešno oddajo obrazca morajo biti izpolnjena vsa polja
+		- polje 'izobrazba' mora ustrezati regularnemu izrazu : /(dipl|mag|dr)\.\s(([a-zčšž]+\.|[a-zčšž]+)\s?)+/
+		- polje 'ime in priimek' mora ustrezati regularnemu izrazu: /\b([A-Z][-,a-z. ']+[ ]*)+/
+	- predmeti: za uspešno oddajo obrazca morajo biti izpolnjena vsa polja z izjemo polj za asistente in module
+	- moduli: za uspešno oddajo obrazca mora biti izpolnjeno polje za ime modula
+	
+- Admin profesor/asistent nastavitve:
+	- za uspešno oddajo obrazca morajo biti izpolnjena vsa polja
+	- polje 'izobrazba' mora ustrezati regularnemu izrazu : /(dipl|mag|dr)\.\s(([a-zčšž]+\.|[a-zčšž]+)\s?)+/
+	- polje 'ime in priimek' mora ustrezati regularnemu izrazu: /\b([A-Z][-,a-z. ']+[ ]*)+/
+	- ob izbrisu profesorja/asistenta mora uporabnik potrditi izbris na pojavnem oknu (Window Alert)
+
+- Predmet nastavitve:
+  - za uspešno oddajo obrazca in posodobitev predmeta morajo biti izpolnjena vsa polja z izjemo polja za urejanje asistentov in modulov
+  - ob izbrisu predmeta mora uporabnik potrditi izbris predmeta na pojavnem oknu (Window Alert)
+
+- Stran predmeta:
+  - nalaganje gradiva:
+    - Za uspešno oddajo obrazca se preverja velikost datoteke; ta ne sme presegati 16MB. Možno je nalaganje spletnega naslova ali pa nalaganje datoteke. Za uspešno pošiljanje obrazca mora biti vnešena natanko ena vrsta gradiva.
+  - komentiranje:
+     - Za uspešno oddajo obrazca mora biti vnešeno besedilo komentarja. Pošiljanje praznega besedila ni dovoljeno.
+  
+- Iskanje
+ - Tekstovno polje za iskanje ne omejuje, kaj lahko uporabnik vpiše. 
 
 
+
+
+### Dodatno uporabljeni paketi s spletnega mesta npmjs
+Poleg obveznih npm paketov smo uporabili tudi druge npm pakete:
+  - [Nodemailer][2]: s pomočjo nodemailerja pošljemo uporabniku povezavo za ponastavitev gesla.  Uporabnik najprej navede ustrezen mail, nakar aplikacija generira žeton za obnovo gesla, ki pošlje uporabniku s pomočjo nodemailer-ja na študentski mail UL, ki ga je uporabnik posredoval.
  [1]:https://api.lavbic.net/docs/#/Kraji
+ [2]:https://www.npmjs.com/package/nodemailer
+
+
+## 3. LP
+
+Dinamična spletna aplikacija s podatkovno bazo
+
+### Povezava do aplikacije v produkcijskem okolju na platformi Heroku
+
+https://sp-lp24-karjola.herokuapp.com/
+
+### Navodila za namestitev in zagon aplikacije v lokalnem okolju s pomočjo orodja Docker
+
+Za zagon aplikacije v okolju Docker je potrebno standardno orodje ``docker-compose``. Za zagon aplikacije se moramo z ukazno vrstico premakniti v korensko mapo repozitorija, nato pa poženemo ukaz ``docker-compose up --build`` in počakamo, da se avtomatsko izvede izgradnja ter zagon aplikacije in podatkovne baze.

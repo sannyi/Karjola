@@ -1,0 +1,90 @@
+<div class="row m-0 mt-2">
+    {{> sidebar }}
+    <main class="col-sm-12 col-md-6 mt-3">
+        <div class="content bg-dark p-3">
+            <p class="h3 p-3">{{ uppercase title }}</p>
+
+            <p id="idOseba" class="hidden">{{ id }}</p>
+
+            <div class="vsebina">
+                <form action="#">
+                    <div class="form-group col-11">
+                        <label for="formAkademskiNazivInput">AKADEMSKI NAZIV</label>
+                        <select class="form-control" id="formAkademskiNazivInput">
+                            <option hidden>{{ akademskiNaziv }}</option>
+                            <option>brez</option>
+                            <option>asistent</option>
+                            <option>docent</option>
+                            <option>profesor</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-11">
+                        <label for="formIzobrazbaInput">IZOBRAZBA</label>
+                        <input type="text" class="form-control" id="formIzobrazbaInput" value="{{ izobrazba }}" placeholder="npr. dipl. inž. rač. mat.">
+                    </div>
+                    <div class="form-group col-11">
+                        <label for="formImeInPriimekInput">IME IN PRIIMEK</label>
+                        <input type="text" class="form-control" id="formImeInPriimekInput" value="{{ ime_priimek }}" placeholder="Ime Priimek">
+                    </div>
+                    <div class="form-group col-11">
+                        <label for="textAreaOpis">OPIS</label>
+                        <textarea class="form-control" id="textAreaOpis" rows="4" placeholder="Kratek opis izobrazbe, dela, področij raziskovanja.">{{ opis }}</textarea>
+                        <div class="btn-objavi">
+                            <button id="zelen-gumb" type="submit" class="btn btn-success" >Shrani</button>
+                            <button type="submit" class="btn btn-danger" id="rdec-gumb">Izbriši</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ALERTS -->
+        <div style="margin-top:10px" class="alert alert-warning alert-dismissible fade show" id="alert-izobrazba" role="alert">
+            Vpišite ustrezno izobrazbo.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div style="margin-top:10px" class="alert alert-warning alert-dismissible fade show" id="alert-ime-priimek" role="alert">
+            Vpišite ustrezno ime in priimek.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div style="margin-top:10px" class="alert alert-warning alert-dismissible fade show" id="alert-ni-slike" role="alert">
+            Naložiti je potrebno tudi sliko.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div style="margin-top:10px" class="alert alert-warning alert-dismissible fade show" id="alert-empty-polja" role="alert">
+            Izpolniti je potrebno vsa polja.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div style="margin-top:10px" class="alert alert-success alert-dismissible fade show" id="alert-oseba-posodobljena" role="alert">
+            Oseba je uspešno posodobljena!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- SIDE IMAGE -->
+    <div class="slika-prof col-sm-7 col-md-3">
+        <img src="/public/img/person-icon.jpg" class="row rounded" alt="Lavbic" width="60%" hidden>
+        <label class="row btn btn-success" id="image-upload-prof-asist" hidden>Naloži sliko<input type="file" id="slika-input" hidden>
+        </label>
+        <div style="margin-left:-15px;" class="alert alert-warning alert-dismissible fade show" id="alert-napacna-slika" role="alert">
+            Napačna vrsta datoteke. Naložiti je možno slike vrste .jpg, .jpeg, .png in .gif.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<script src="/public/js/admin_prof_asistent_urejanje.js"></script>

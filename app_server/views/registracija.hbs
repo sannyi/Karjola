@@ -1,0 +1,64 @@
+        <div class="row m-0 mt-2">
+          {{>sidebar}}
+          <main class="col-sm-12 col-md-9 mt-3">
+            <div class="content bg-dark p-3">
+              <h2 class="formtitle">REGISTRACIJA</h2>
+              <br/>
+              <form method="POST" action="" autocomplete="on" id="forma">
+                <div class="form-row col-md-12">
+                  <div class="form-group col-md-6">
+                        <label for="inputEmail4">UPORABNIŠKO IME <em class="required">*</em></label>
+                        <input type="text" class="form-control" id="userName" name="uporabniskoime" placeholder="Uporabniško ime" required autofocus>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">E-POŠTA <em class="required">*</em></label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="ePosta" placeholder="Vnesi email" autocomplete="on"
+                    pattern="[a-z]{2}[0-9]{4}@student.uni-lj.si" title="Vnesi e-poštni naslov, ki si ga prejel s strani Univerze v Ljubljani. Primer: jn0000@student.uni-lj.si" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">GESLO <em class="required">*</em></label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="novoGeslo" placeholder="Geslo" required>
+                  </div>
+                  <div class="form-group col-md-6" >
+                    <label for="repeatPassword">POTRDITEV GESLA <em class="required">*</em></label>
+                    <input type="password" class="form-control" id="repeatPassword" placeholder="Ponovi geslo" name="ponoviNovoGeslo" required>
+                  </div>
+                </div>         
+                <div class="form-row col-md-12">
+                  <div class="form-group col-md-4">
+                    <label for="inputAddress">NASLOV <em class="required">*</em></label>
+                    <input type="text" class="form-control" id="inputAddress" name="naslov" placeholder="Trg republike" autocomplete="on" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputZip">POŠTNA ŠTEVILKA <em class="required">*</em></label>
+                      <input type="text" class="form-control" id="inputZip" placeholder="1000" name="posta" title="Vnesi ustrezno poštno številko občine, v kateri živiš." onfocusout="api()" required>
+                  </div>
+                  <br/>
+                  <div class="form-group col-md-4">
+                      <label for="inputCity">KRAJ</label>
+                      <input type="text" class="form-control" id="inputCity" name="kraj" placeholder="Ljubljana"  autocapitalize="on" disabled required>
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <div class="form-check col-md-6">
+                    <input class="form-check-input" type="radio" name="splosni_pogoji" id="gridRadios3" value="strinjeSe" required>
+                    <label class="form-check-label" for="gridRadios3">
+                     Z uporabo strani se je potrebno strinjati s <a href="/splosniPogoji">splošnimi pogoji.</a>
+                    </label>
+                  </div>
+                  <br/>
+                  <button type="submit" id="submit" class="btn btn-primary">Registriraj se</button>
+                </div>
+                <div class="alerts col-md-12">
+                  <div class="alert alert-danger fade show" role="alert">
+                      <strong id="danger-strong">Zahtevana vnosna polja niso izpolnjena!</strong><span id="danger-navadno"></span>
+                  </div>   
+                  <div class="alert alert-success  fade show" role="alert">
+                      <strong id="success-strong">Registracija uspešna!</strong></strong><span id="success-navadno"></span>
+                  </div>
+                </div>
+              </form>              
+            </div>
+          </main>
+      </div>
+      <script src="/public/js/forms.js"></script>

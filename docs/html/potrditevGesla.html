@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="../css/cross_site_css.css"/>
         <link rel="stylesheet" href="../css/style.css">
     </head>
     
@@ -32,7 +31,7 @@
                 <!-- Search button-->
                 <div class="nav-item ml-auto my-2">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Išči gradivo">
+                        <input type="text" class="form-control" id="searchinput" placeholder="Išči gradivo">
                         <div class="input-group-append">
                           <button class="btn btn-secondary" type="button">
                             <i class="fa fa-search"></i>
@@ -101,11 +100,11 @@
                 <div class="content bg-dark p-3">
                     <h2 class="formtitle">VNOS NOVEGA GESLA</h2>
                     <br/>
-                    <form>
+                    <form method="POST" action="pozabljenoGesloPotrditev.html">
                         <div class="form-row col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group col-md-6 col-lg-12">
                                 <label for="exampleInputPassword1">NOVO GESLO <em class="required">*</em></label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Geslo" required>
+                                <input type="password" class="form-control" id="InputPassword" placeholder="Geslo" name="password" required>
                             </div>                           
                             <div class="form-group col-md-6 col-lg-12" >
                                 <label for="repeatPassword">POTRDI GESLO <em class="required">*</em></label>
@@ -113,21 +112,14 @@
                             </div>        
                         </div>
                         <div class="form-group col-md-2 col-lg-6">
-                            <button type="submit" class="btn btn-primary">Ponastavi!</button>
+                            <button type="submit" id="submit" class="btn btn-primary">Ponastavi!</button>
                         </div>
                         <div class="alerts col-md-12">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Uredi geslo po zahtevah!</strong> Geslo mora biti sestavljeno iz najmanj 12 znakov - vsaj ene velike in ene male tiskane črke, ene številke ter enega posebnega znaka. Obe gesli morata biti enaki.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button> 
-                            </div>
-                        
+                                <strong id="danger-strong">Zahtevana vnosna polja niso izpolnjena!</strong><span id="danger-navadno"></span>
+                            </div>         
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong>Geslo je bilo uspešno ponastavljeno!</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
                             </div>
                         </div>
                       </form>

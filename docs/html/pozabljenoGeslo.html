@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="../css/cross_site_css.css"/>
         <link rel="stylesheet" href="../css/style.css">
         </head>
     </head>
@@ -33,7 +32,7 @@
                 <!-- Search button-->
                 <div class="nav-item ml-auto my-2">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Išči gradivo">
+                        <input type="text" class="form-control" id="searchinput" placeholder="Išči gradivo">
                         <div class="input-group-append">
                           <button class="btn btn-secondary" type="button">
                             <i class="fa fa-search"></i>
@@ -109,26 +108,20 @@
                 <div class="content bg-dark p-3">
                     <h2 class="formtitle">PONASTAVITEV GESLA</h2>
                     <br/>
-                    <form>
+                    <form method="POST" >
                         <div class="form-group col-md-12" id="enterEmailForgetPassword">
-                          <label for="exampleInputEmail1">E-MAIL <em class="required">*</em></label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Vnesi e-poštni naslov za ponastavitev gesla" required autocomplete="on"
+                          <label for="exampleInputEmail1">E-POŠTA <em class="required">*</em></label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Vnesi e-poštni naslov za ponastavitev gesla" required name="email" autocomplete="on"
                           pattern="[a-z]{2}[0-9]{4}@student.uni-lj.si" title="Vnesi e-poštni naslov, ki si ga prejel s strani Univerze v Ljubljani. Primer: jn0000@student.uni-lj.si">
                           <br/>
-                          <button type="submit" class="btn btn-primary ">Ponastavi geslo!</button>
+                          <button type="submit" id="submit" class="btn btn-primary ">Ponastavi geslo!</button>
                         </div>
                         <div class="alerts col-md-12">
                             <div class="alert alert-danger alert-dismissible fade show col-md-12" role="alert">
-                                <strong>Ups to pa ne bo šlo!</strong> Preveri če si navedel pravi e-mail naslov, saj ni videti, da bi bil v podatkovni bazi.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
+                                <strong id="danger-strong">Zahtevana vnosna polja niso izpolnjena!</strong><span id="danger-navadno"></span>
                             </div>
                             <div class="alert alert-success alert-dismissible fade show " role="alert">
-                                <strong>Navodila za ponastavitev gesla so bila poslana!</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
+                                <strong id="success-strong">Navodila za ponastavitev gesla so bila poslana!</strong></strong><span id="success-navadno"></span>
                             </div>
                         </div>
                       </form>
@@ -136,7 +129,7 @@
                 
             </main>
         </div>
-        <scrip src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></scrip>
+        <scrip src="https://code.jqugery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></scrip>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         <script src="../js/forms.js"></script>
