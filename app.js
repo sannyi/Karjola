@@ -30,7 +30,8 @@ var swaggerOptions = {
         },
         servers: [
             {url: "http://localhost:3000/api"},
-            {url: "https://sp-lp24-karjola.herokuapp.com/api"}
+            {url: "https://sp-lp24-karjola.herokuapp.com/api"},
+            {url:"https://karjola-shanji.herokuapp.com/api/**"}
         ]
     },
     apis: [
