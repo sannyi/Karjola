@@ -25,8 +25,8 @@ export class UporabnikPodrobnosti{
     uporabniskoIme:string;
     ePosta:string;
     jeAdmin: string;
-    posta:string;
-    kraj:string;
+   // posta:string;
+  //  kraj:string;
 }
 export class UporabnikObnovaGesla{
     ePosta:string;

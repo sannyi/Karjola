@@ -318,15 +318,15 @@ const jwt = require('jsonwebtoken');
  */
 
 const uporabnikiSchema = new mongoose.Schema({
-    uporabniskoIme: {type:String, required: true/*, unique: true*/},
+    uporabniskoIme: {type:String, required: true, unique: true},
     ePosta: {type:String, required: true, unique: true},
     nakljucnaVrednost: String, 
     zgoscenaVrednost: {type:String, required:true},
     zetonZaObnavljanjeGesla: {type: String, "default":"obnovljeno"}, 
-    jeAdmin: {type: Boolean, "default":false},
-    naslov: String,
+    jeAdmin: {type: Boolean, "default":false}
+   /* naslov: String,
     kraj: {type: String, "default": "Ljubljana", required: true},
-    posta: {type: Number, min:1000, max:9999,"default":1000, required: true}   
+    posta: {type: Number, min:1000, max:9999,"default":1000, required: true}   */
 });
 
 uporabnikiSchema.methods.nastaviGeslo = function(geslo){

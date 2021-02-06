@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { ChartType, ChartOptions, ChartFontOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
@@ -125,4 +125,4 @@ export class StatistikeComponent implements OnInit {
   }
 
 
-}
+}*/

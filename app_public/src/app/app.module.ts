@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppUsmerjanjeModule } from './moduli/app-usmerjanje/app-usmerjanje.module';
-import { ChartsModule } from 'ng2-charts';
+//import { ChartsModule } from 'ng2-charts';
 
 import { OgrodjeComponent } from './skupno/komponente/ogrodje/ogrodje.component';
 import { GlavaComponent } from './skupno/komponente/glava/glava.component';
@@ -18,7 +18,7 @@ import { VnesiNovoGesloComponent } from './skupno/komponente/vnesi-novo-geslo/vn
 import { ObnoviGesloComponent } from './skupno/komponente/obnovi-geslo/obnovi-geslo.component'; 
 import { IskanjeComponent } from './skupno/komponente/iskanje/iskanje.component';
 import { PodatkovnaBazaComponent } from './skupno/komponente/podatkovna-baza/podatkovna-baza.component';
-import { StatistikeComponent } from './skupno/komponente/statistike/statistike.component';
+//import { StatistikeComponent } from './skupno/komponente/statistike/statistike.component';
 import { SplosniPogojiComponent } from './skupno/komponente/splosni-pogoji/splosni-pogoji.component';
 import { PotrditevObnoveGeslaComponent } from './skupno/komponente/potrditev-obnove-gesla/potrditev-obnove-gesla.component';
 import { UporabnikComponent } from './skupno/komponente/uporabnik/uporabnik.component';
@@ -55,7 +55,7 @@ import { CasOddajePipe } from './skupno/pipes/cas-oddaje.pipe';
       DomacaStranComponent,
       SideBarComponent,
       IskanjeComponent,
-      StatistikeComponent,
+      //StatistikeComponent,
       SplosniPogojiComponent,
       PodatkovnaBazaComponent,
 
@@ -105,7 +105,7 @@ import { CasOddajePipe } from './skupno/pipes/cas-oddaje.pipe';
     ReactiveFormsModule,
     AppUsmerjanjeModule,
     NgbModule,
-    ChartsModule,
+    //ChartsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   exports: [ModalPredmetiComponent],

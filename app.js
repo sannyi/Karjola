@@ -112,25 +112,6 @@ app.use('/api', (req, res, next) => {
     next();
 });
 
-//preusmeritev na HTTPS na Heroku
-if (process.env.NODE_ENV === 'production') {
-    app.use((req, res, next) => {
-        if (req.header('x-forwarded-proto') !== 'https')
-            res.redirect(`https://${req.header('host')}${req.url}`);
-        else
-            next();
-    });
-}
-
-app.disable('x-powered-by');
-app.use((req,res,next)=>{
-res.header('X-Frame-Options', 'DENY');
-  res.setHeader('X-XSS-Protection', '1; mode=block');
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  next();
-});
-
-
 app.use('/api/predmeti', predmetiApi);
 app.use('/api/gradivo', gradivoApi);
 app.use('/api/osebje', osebjeApi);
@@ -164,6 +145,8 @@ app.use(function (req, res, next) {
         error: ''
     });
 });
+//Update robots.txt  for future use
+//app.use(robots({ UserAgent: '*', Disallow: '/' }))
 
 // /api error handler
 app.use('/api', function (err, req, res, next) {

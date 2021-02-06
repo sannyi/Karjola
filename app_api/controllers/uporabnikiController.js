@@ -31,17 +31,17 @@ const prikazi = (req, res) => {
 const registrirajUporabnika = (req, res) => { //ok
     
 //#region  ERROR HANDLING PRI KREIRANJU NOVEGA UPORABNIKA
-    if( !req.body.uporabniskoIme || !req.body.ePosta || !req.body.novoGeslo || !req.body.ponoviNovoGeslo ||
-        !req.body.naslov || !req.body.posta || !req.body.kraj){
+    if( !req.body.uporabniskoIme || !req.body.ePosta || !req.body.novoGeslo || !req.body.ponoviNovoGeslo){
             return res.status(400).json({
                     "sporočilo":"Vsi podatki v obrazcu morajo biti izpolnjeni!"
             });
         }
+    /*    
     if(!new RegExp(/^\d{4}$/).test(req.body.posta)){
         return res.status(400).json({
             "sporočilo": "Pošta je štirimestna številka!"
         }) 
-    }
+    }*/
     if(!new RegExp("[a-z]{2}[0-9]{4}@student.uni-lj.si").test(req.body.ePosta)){
         return res.status(400).json({
             "sporočilo": " Uporabi svoj študentski email, ki si ga prejel od UL!"
@@ -52,8 +52,8 @@ const registrirajUporabnika = (req, res) => { //ok
             "sporočilo": "Geslo mora ustrezati naslednjim kriterijem: Geslo more vsebovati vsaj eno veliko in eno majhno črko. Geslo mora vsebovati vsaj eno številko in biti dolgo 8 znakov. Prav tako poskrbi, da bo v obe polji vpisano isto geslo!"
         }) 
     }  
-    var naslov = req.body.naslov; var kraj = req.body.kraj; var uporabniskoIme = req.body.uporabniskoIme;
-    if(new RegExp(/<\/?[a-z][\s\S]*>/i).test(naslov) || new RegExp(/<\/?[a-z][\s\S]*>/i).test(kraj) || new RegExp(/<\/?[a-z][\s\S]*>/i).test(uporabniskoIme)){
+    /*var naslov = req.body.naslov; var kraj = req.body.kraj; */var uporabniskoIme = req.body.uporabniskoIme;
+    if(new RegExp(/<\/?[a-z][\s\S]*>/i).test(uporabniskoIme)){
     return res.status(400).json({
             "sporočilo": "Hm, vnos ne zgleda legit."
         }) 
@@ -64,10 +64,7 @@ const registrirajUporabnika = (req, res) => { //ok
     uporabnik.ePosta = req.body.ePosta;
     uporabnik.nastaviGeslo(req.body.novoGeslo);
     
-    uporabnik.naslov = req.body.naslov;
-    uporabnik.kraj  = req.body.kraj;
-    uporabnik.posta = req.body.posta;  
-    
+       
     uporabnik.nastaviZeton(pomozneFunkcije.generirajObnovitveniZeton());
 
     uporabnik.save(napaka => {
@@ -76,7 +73,7 @@ const registrirajUporabnika = (req, res) => { //ok
             if(napaka.code == 11000){
                 
                 return res.status(409).json({
-                    "sporočilo":"Uporabnik s tem emailom že ostaja v bazi, če ni si ti, sporoči staffu."
+                    "sporočilo":"Uporabnik s tem emailom/uporabniškim imeno že ostaja v bazi, če ni si ti, sporoči staffu."
                 });
             }
             else{
