@@ -226,7 +226,9 @@ a#admin_prof_asist {
 .section-moduli {
     margin-top: 70px;
 }
-
+a #splosni_pogoji{
+  color: white;
+}
 input#admin_managment{
     color: white !important;
 }

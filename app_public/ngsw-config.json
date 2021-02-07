@@ -36,13 +36,12 @@
       "name": "karjola-api",
       "urls": [
         "http://localhost:3000/**",
-        "https://sp-lp24-karjola.herokuapp.com/api/**",
         "https://karjola-shanji.herokuapp.com/api/**"
       ],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 20,
-        "maxAge": "45d",
+        "maxAge": "40d",
         "timeout": "5s"
       }
     }

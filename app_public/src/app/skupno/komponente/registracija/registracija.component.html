@@ -4,7 +4,7 @@
   <form (submit)="posiljanjePodatkov()" autocomplete="on" id="forma">
     <div class="form-row col-md-12">
       <div class="form-group col-md-6">
-        <label for="inputEmail4">UPORABNIŠKO IME <em class="required">*</em></label>
+        <label for="userName">UPORABNIŠKO IME <em class="required">*</em></label>
         <input type="text" class="form-control" id="userName" [(ngModel)]="registracijskiPodatki.uporabniskoIme"
                name="uporabniskoIme" placeholder="Uporabniško ime" [disabled]="!jePovezava()" required autofocus>
       </div>
@@ -53,7 +53,7 @@
       <div class="form-check col-md-6">
         <!--<input class="form-check-input" type="radio" [(ngModel)]="registracijskiPodatki.splosni_pogoji"  id="gridRadios3" value="strinjeSe" required>-->
         <label class="form-check-label" for="gridRadios3"  >
-          Z uporabo strani se strinjaš s <a routerLink="/splosniPogoji" >splošnimi pogoji.</a>
+          Z uporabo strani se strinjaš s <u><i><a id="splosni_pogoji" routerLink="/splosniPogoji" >splošnimi pogoji.</a></i></u>
         </label>
       </div>
       <br/>

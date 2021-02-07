@@ -148,7 +148,10 @@ app.use(function (req, res, next) {
 });
 //Update robots.txt  for future use
 //app.use(robots({ UserAgent: '*', Disallow: '/' }))
-
+app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("User-agent: *\nDisallow: /");
+});
 // /api error handler
 app.use('/api', function (err, req, res, next) {
     // set locals, only providing error in development

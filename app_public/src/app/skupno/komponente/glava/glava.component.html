@@ -29,9 +29,9 @@
     <div class="nav-item ml-auto my-2">
       <form action="/iskanje" method="get" class="d-inline">
         <div class="input-group">
-          <input type="text" class="form-control" [(ngModel)]="iskalniIzraz" [ngModelOptions]="{standalone: true}" placeholder="Išči gradivo" [disabled] ="!jePovezava()">
+          <input type="text" class="form-control" [(ngModel)]="iskalniIzraz" [ngModelOptions]="{standalone: true}" placeholder="Išči gradivo" [disabled] ="!jePovezava()" aria-label="Search">
           <div class="input-group-append">
-            <button class="btn btn-secondary" type="submit" routerLink="/iskanje" [queryParams]="{iskalniIzraz: iskalniIzraz}" [disabled]="!jePovezava()" aria-label="search">
+            <button class="btn btn-secondary" type="submit" routerLink="/iskanje" [queryParams]="{iskalniIzraz: iskalniIzraz}" [disabled]="!jePovezava()" aria-label="Search">
               <i class="fa fa-search"></i>
             </button>
           </div>
