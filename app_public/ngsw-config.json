@@ -17,8 +17,8 @@
     },
     {
       "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
+      "installMode": "prefetch",
+      "updateMode": "lazy",
       "resources": {
         "files": [
           "/assets/**",
@@ -39,8 +39,8 @@
         "https://karjola-shanji.herokuapp.com/api/**"
       ],
       "cacheConfig": {
-        "strategy": "freshness",
-        "maxSize": 20,
+        "strategy": "performance",
+        "maxSize": 100,
         "maxAge": "40d",
         "timeout": "5s"
       }

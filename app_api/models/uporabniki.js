@@ -19,10 +19,6 @@
  *     value:
  *      sporočilo: Uporabnika ne najdem v bazi
  */
-
-
-
-
 /**
  * @swagger
  * components:
@@ -283,7 +279,6 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-
 /**
  * @swagger
  * components:
@@ -316,7 +311,6 @@ const jwt = require('jsonwebtoken');
  *              - kraj
  *              - posta
  */
-
 const uporabnikiSchema = new mongoose.Schema({
     uporabniskoIme: {type:String, required: true, unique: true},
     ePosta: {type:String, required: true, unique: true},
@@ -324,9 +318,7 @@ const uporabnikiSchema = new mongoose.Schema({
     zgoscenaVrednost: {type:String, required:true},
     zetonZaObnavljanjeGesla: {type: String, "default":"obnovljeno"}, 
     jeAdmin: {type: Boolean, "default":false}
-   /* naslov: String,
-    kraj: {type: String, "default": "Ljubljana", required: true},
-    posta: {type: Number, min:1000, max:9999,"default":1000, required: true}   */
+    //ko bo nodemailer usposobljen ->     ,jePotrjen: {type: Boolean, "default":false}
 });
 
 uporabnikiSchema.methods.nastaviGeslo = function(geslo){
@@ -340,11 +332,11 @@ uporabnikiSchema.methods.preveriZeton = function(zeton){
     let zetonZaObnavljanjeGesla = crypto.pbkdf2Sync(zeton,this.nakljucnaVrednost,1000,64,'sha512').toString('hex');
     return this.zetonZaObnavljanjeGesla == zetonZaObnavljanjeGesla;
 }
-
 uporabnikiSchema.methods.preveriGeslo = function(geslo){
     let zgoscenaVrednost = crypto.pbkdf2Sync(geslo,this.nakljucnaVrednost,1000,64,'sha512').toString('hex');
     return this.zgoscenaVrednost == zgoscenaVrednost;
 };
+uporabnikiSchema.methods.potrdiUporabnika = function(){ if(!this.jePotrjen){this.jePotrjen=true;}}
 
 uporabnikiSchema.methods.posodobiGeslo = function(staroGeslo, novoGeslo, ponoviNovoGeslo){
 

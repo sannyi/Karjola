@@ -412,6 +412,9 @@ a#potrditev{
   color: #8CFBDE;
 }
 
+.btn-success{
+  color: #000000;
+}
 .pagination {
   display: flex;
   justify-content: center;

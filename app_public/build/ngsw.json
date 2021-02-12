@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1612700873176,
+  "timestamp": 1613074872629,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.3ef5004551dd2a7ff142.js",
+        "/main.9aae3259f1c9cc8d923e.js",
         "/manifest.webmanifest",
         "/polyfills.3116b8e9dbb90fea460e.js",
         "/runtime.0e49e2b53282f40c8925.js",
@@ -23,8 +23,8 @@
     },
     {
       "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
+      "installMode": "prefetch",
+      "updateMode": "lazy",
       "cacheQueryOptions": {
         "ignoreVary": true
       },
@@ -85,8 +85,8 @@
         "http:\\/\\/localhost:3000\\/.*",
         "https:\\/\\/karjola-shanji\\.herokuapp\\.com\\/api\\/.*"
       ],
-      "strategy": "freshness",
-      "maxSize": 20,
+      "strategy": "performance",
+      "maxSize": 100,
       "maxAge": 3456000000,
       "timeoutMs": 5000,
       "cacheQueryOptions": {
@@ -106,8 +106,8 @@
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/assets/public/css/all.min.css": "2c2236d61417d354b5cbbc907dfc9c0eb1325a7f",
     "/assets/public/css/bootstrap.min.css": "334f40dd947ed1dc3247ee94d13b6f60410a17b4",
-    "/assets/public/css/style copy.css": "d2b3adab75dc9e2218211634bb66ab5f5f726b7c",
-    "/assets/public/css/style.css": "8aad834bb7521916108eb769828029c952bcfbe3",
+    "/assets/public/css/style copy.css": "8752ce2aea84794842594a1ba94b34f2aebd28d0",
+    "/assets/public/css/style.css": "37b97be248f08868f4d76e0e579de0cc48c663e7",
     "/assets/public/img/Logo.png": "406da6e9f3d8a0990c1258e2cec3314647d635bd",
     "/assets/public/img/dejan_lavbic.jpg": "e35aba8389f6fd07f36f09a4627a518a5f6b5770",
     "/assets/public/img/person-icon.jpg": "f445354c261808a65f27ae5b71c70b2443fb30e3",
@@ -139,8 +139,8 @@
     "/assets/public/webfonts/fa-solid-900.woff": "3b86a0ce15d8d534b65e98560e321a933d310688",
     "/assets/public/webfonts/fa-solid-900.woff2": "9b592048b9062b00f0b2dd782d70a95b7dc69b83",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "6e7f501a550a7f996a41fa93aad10888b1e0f4d0",
-    "/main.3ef5004551dd2a7ff142.js": "22e85b416c57c4ec02554ba760f8c9b3260bac59",
+    "/index.html": "a80c5ff17cf37ac923ccf0d88454097a7777b542",
+    "/main.9aae3259f1c9cc8d923e.js": "2a945f6c86b1b575cc011bc3cd6ec64fbafcf290",
     "/manifest.webmanifest": "665e9306f21e12ab05c0bb114d1ecc8481d9a561",
     "/polyfills.3116b8e9dbb90fea460e.js": "0d003992512d28c544b0a972ce2ae6b28ebbf5f6",
     "/runtime.0e49e2b53282f40c8925.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",

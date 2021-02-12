@@ -35,7 +35,7 @@ import { AdminModuliComponent } from './skupno/komponente/admin-moduli/admin-mod
 import { SideBarGumbiComponent } from './skupno/komponente/side-bar-gumbi/side-bar-gumbi.component';
 import { ModalOsebjeComponent } from './skupno/komponente/modal-osebje/modal-osebje.component';
 import { OsebjeComponent } from './skupno/komponente/osebje/osebje.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { ServiceWorkerModule, SwRegistrationOptions } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {KomentarComponent} from './skupno/komponente/komentar/komentar.component'
 import {PredmetGradivaComponent} from './skupno/komponente/predmet-gradiva/predmet-gradiva.component'
@@ -78,6 +78,7 @@ import { CasOddajePipe } from './skupno/pipes/cas-oddaje.pipe';
       ModalPredmetiComponent,
       ModalModuliComponent,
       AdminModuliComponent,
+      
       SideBarGumbiComponent,
       ModalOsebjeComponent,
       OsebjeComponent,
@@ -91,23 +92,16 @@ import { CasOddajePipe } from './skupno/pipes/cas-oddaje.pipe';
       FormatirajSemesterPipe,
       FormatirajTipIzbirnegaPipe,
       CasOddajePipe
-
-    
-      //Pipe
-      // -> pokažemo datum nastanka komentarja
-      // -> pokažemo koliko časa je uporabnik registriran
   ],
   imports: [
-    
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),  
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AppUsmerjanjeModule,
-    NgbModule,
-    //ChartsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
-  ],
+    NgbModule
+    ],
   exports: [ModalPredmetiComponent],
   providers: [],
   bootstrap: [OgrodjeComponent],

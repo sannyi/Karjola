@@ -227,12 +227,18 @@ const vnosZetona = (req,res) =>{ //ok
             return res.status(404).json({"sporočilo":"Če misliš, da bi moral biti registriran vprašaj osebje, če si res."});
         }
         uporabnik.nastaviZeton(generiranZeton);
-       
-        if(!pomozneFunkcije.posljiObnovitveniZeton(generiranZeton,req.body.ePosta)){
-            return res.status(500).json({"sporočilo": "Zgodila se je interna napaka funkcije, ki pošilja maile. Kontaktiraj osebje"});
-        }
+        pomozneFunkcije.posljiObnovitveniZeton(generiranZeton,req.body.ePosta).then(
+            rezultat =>{
+                console.log("Sporočilo uspešno poslano   ->", rezultat);
+                return res.status(200).json({"sporočilo":"Žeton poslan na mail"});
+            }
+        ).catch(
+            napaka =>{
+                console.log(napaka.message); //overrindamo, da na admin mail pošeljemo naslov?
+                return res.status(500).json({"sporočilo": "Zgodila se je interna napaka funkcije, ki pošilja maile. Kontaktiraj osebje"});
+            }
+        )
         uporabnik.save();
-        return res.status(200).json({"sporočilo": "Žeton poslan na mail."});    
     }
     );
   };
