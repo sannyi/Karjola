@@ -1,9 +1,9 @@
 export class Uporabnik {
-   
     uporabniskoIme: string;
     ePosta: string;
     _id: string;
-    jeAdmin: boolean;
+    ponoviNovoGeslo:string;
+    jeAdmin:boolean;
 }
 export class UporabnikPrijava{
     ePosta:string;
@@ -25,8 +25,6 @@ export class UporabnikPodrobnosti{
     uporabniskoIme:string;
     ePosta:string;
     jeAdmin: string;
-   // posta:string;
-  //  kraj:string;
 }
 export class UporabnikObnovaGesla{
     ePosta:string;

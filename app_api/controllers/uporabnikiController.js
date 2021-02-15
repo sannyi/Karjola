@@ -19,7 +19,6 @@ const prikazi = (req, res) => {
                         "_id":uporabnik._id,
                         "uporabniskoIme": uporabnik.uporabniskoIme,
                         "ePosta":uporabnik.ePosta,
-                        "jeAdmin": uporabnik.jeAdmin,
                         "posta":uporabnik.posta,
                         "kraj":uporabnik.kraj
                     };
@@ -31,9 +30,10 @@ const prikazi = (req, res) => {
 const registrirajUporabnika = (req, res) => { //ok
     
 //#region  ERROR HANDLING PRI KREIRANJU NOVEGA UPORABNIKA
+    console.log(req.body);
     if( !req.body.uporabniskoIme || !req.body.ePosta || !req.body.novoGeslo || !req.body.ponoviNovoGeslo){
             return res.status(400).json({
-                    "sporočilo":"Vsi podatki v obrazcu morajo biti izpolnjeni!"
+                    "sporočilo":"Vsi podatki v obrazcu morajo biti izpolnjeni! (NODE odgovor)"
             });
         }
     /*    

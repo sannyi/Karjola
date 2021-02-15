@@ -5,6 +5,7 @@ var apiParametri = {
 
 if (process.env.NODE_ENV === 'production') {
     apiParametri.streznik = process.env.API_SERVER_URI;
+    console.log(process.env.API_SERVER_URI);
 }
 
 const apiPovezava = (link, parametri) => {

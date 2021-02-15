@@ -27,6 +27,7 @@ export class UporabnikPodatkiStoritev {
   private avtentikacija(urlNaslov: string, uporabnik: any): Promise<RezultatAvtentikacije> {
     
     const url: string = `${this.apiUrl}/${urlNaslov}`;
+    console.log(uporabnik);
     return this.http
       .post(url, uporabnik)
       .toPromise()

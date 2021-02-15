@@ -4,6 +4,7 @@ var logger = require('../../modules/logger');
 var dbURI = "mongodb://localhost/karjola";
 if (process.env.MONGODB_CLOUD_URI) {
     dbURI = process.env.MONGODB_CLOUD_URI;
+  
 }
 
 mongoose.connect(dbURI, {

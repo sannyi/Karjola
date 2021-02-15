@@ -20,6 +20,7 @@ export class ZgodovinaService {
     return dolzina > 1 ? this.urlNaslovi[dolzina - 2] : '/';
   }
   public vrniPredhodnjeUrlNasloveBrezIzbranih(): string {
+    //preveri te izločitve in ustrezno fixaj
     const izloci: string[] = ['/registracija', '/prijava', '/obnoviGeslo','/vnesiNovoGeslo/:eposta', '/uporabniki/:idUporabnika', ];
     const filtrirano = this.urlNaslovi.filter(url => !izloci.includes(url));
     const dolzina = filtrirano.length;

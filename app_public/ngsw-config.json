@@ -39,7 +39,7 @@
         "https://karjola-shanji.herokuapp.com/api/**"
       ],
       "cacheConfig": {
-        "strategy": "performance",
+        "strategy": "freshness",
         "maxSize": 100,
         "maxAge": "40d",
         "timeout": "5s"

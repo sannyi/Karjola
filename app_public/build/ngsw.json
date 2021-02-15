@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1613074872629,
+  "timestamp": 1613414008894,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.9aae3259f1c9cc8d923e.js",
+        "/main.c72fd1502d13e91a9b81.js",
         "/manifest.webmanifest",
         "/polyfills.3116b8e9dbb90fea460e.js",
         "/runtime.0e49e2b53282f40c8925.js",
@@ -85,7 +85,7 @@
         "http:\\/\\/localhost:3000\\/.*",
         "https:\\/\\/karjola-shanji\\.herokuapp\\.com\\/api\\/.*"
       ],
-      "strategy": "performance",
+      "strategy": "freshness",
       "maxSize": 100,
       "maxAge": 3456000000,
       "timeoutMs": 5000,
@@ -139,9 +139,9 @@
     "/assets/public/webfonts/fa-solid-900.woff": "3b86a0ce15d8d534b65e98560e321a933d310688",
     "/assets/public/webfonts/fa-solid-900.woff2": "9b592048b9062b00f0b2dd782d70a95b7dc69b83",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "a80c5ff17cf37ac923ccf0d88454097a7777b542",
-    "/main.9aae3259f1c9cc8d923e.js": "2a945f6c86b1b575cc011bc3cd6ec64fbafcf290",
-    "/manifest.webmanifest": "665e9306f21e12ab05c0bb114d1ecc8481d9a561",
+    "/index.html": "f615e645509da7e3bda91edbfb1487f860d1218e",
+    "/main.c72fd1502d13e91a9b81.js": "7fb7c7c1736cd72c9482c0e44d437d9daa475044",
+    "/manifest.webmanifest": "6df04eefc2623815eb91967e4b33427559c7a51f",
     "/polyfills.3116b8e9dbb90fea460e.js": "0d003992512d28c544b0a972ce2ae6b28ebbf5f6",
     "/runtime.0e49e2b53282f40c8925.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/styles.280e991c5992f8630bc9.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
