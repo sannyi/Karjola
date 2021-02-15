@@ -10,7 +10,7 @@
   const expect = require("chai").expect;
   
   // Parametri
-  let aplikacijaUrl = "https://sp-lp24-karjola.herokuapp.com/"
+  let aplikacijaUrl = "https://karjola-shanji.herokuapp.com/"
   let seleniumStreznikUrl = "http://localhost:4445/wd/hub";
   let brskalnik, jwtZeton;
 

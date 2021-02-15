@@ -28,9 +28,6 @@ export class RegistracijaComponent implements OnInit {
     ePosta: '',
     novoGeslo: '',
     ponoviNovoGeslo: '',
- // naslov: '',
- // posta: '',
- // kraj: '',
     jeAdmin: false
     
   } 
@@ -71,7 +68,7 @@ export class RegistracijaComponent implements OnInit {
     }
     if( this.registracijskiPodatki.uporabniskoIme ==""  || this.registracijskiPodatki.ePosta ==""  || this.registracijskiPodatki.novoGeslo ==""  || this.registracijskiPodatki.ponoviNovoGeslo ==""
       ){
-          this.nastaviNapako("Manjkajoči podatki!", "Preveri manjkajoče podatke in jih izpolni."); return;
+          this.nastaviNapako("Manjkajoči podatki! ", "Preveri manjkajoče podatke in jih izpolni."); return;
       }
     /*if(!new RegExp(/^\d{4}$/).test(this.registracijskiPodatki.posta) || parseInt(this.registracijskiPodatki.posta)<1000){
       this.nastaviNapako("Štiri števke!"," Pošta je sestavljena iz štiri števk od 1000 do 9999."); return;

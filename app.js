@@ -30,7 +30,7 @@ var swaggerOptions = {
         },
         servers: [
             {url: "http://localhost:3000/api"},
-            {url: "https://sp-lp24-karjola.herokuapp.com/api"},
+            
             {url:"https://karjola-shanji.herokuapp.com/api"}
         ]
     },
@@ -95,13 +95,10 @@ hbs.registerPartials('./app_server/views/partials');
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'hbs');
 
-require('./app_server/views/helpers/hbsHelpers');
-
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50MB'}));
 app.use(bodyParser.urlencoded({limit: '50MB', extended: true}));
 app.use(cookieParser());
-//app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_public', 'build')));
 
 app.use(passport.initialize());

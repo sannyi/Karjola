@@ -70,15 +70,17 @@ const registrirajUporabnika = (req, res) => { //ok
     uporabnik.save(napaka => {
          if(napaka)
          {
-            if(napaka.code == 11000){
+             const n = String(napaka.code);
+           if(napaka.code == 11000){
                 
                 return res.status(409).json({
-                    "sporočilo":"Uporabnik s tem emailom/uporabniškim imeno že ostaja v bazi, če ni si ti, sporoči staffu."
+                    "sporočilo": n
                 });
             }
             else{
                 return res.status(500).json({
-                    "sporočilo":"Nekaj je šlo narobe."
+                    "sporočilo":"Nekaj je šlo narobe.",
+                    "napaka": napaka.code
                 });
             }
          }          
